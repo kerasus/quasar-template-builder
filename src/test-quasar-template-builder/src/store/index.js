@@ -1,8 +1,6 @@
 import { store } from "quasar/wrappers";
 import { createStore } from "vuex";
-import { QuasarTemplateBuilderAppLayout } from "../../../../index";
-
-// import example from './module-example'
+import AppLayout from './AppLayout'
 
 /*
  * If not building with SSR mode, you can
@@ -16,7 +14,7 @@ import { QuasarTemplateBuilderAppLayout } from "../../../../index";
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      QuasarTemplateBuilderAppLayout
+      AppLayout
     },
 
     // enable strict mode (adds overhead!)
