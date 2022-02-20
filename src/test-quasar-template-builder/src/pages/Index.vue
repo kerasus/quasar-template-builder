@@ -315,7 +315,6 @@ export default {
   watch: {
     'pick.header': function (newValue) {
       this.updateLayoutHeader(newValue)
-      console.log('set', this.pick.header)
     },
     'play.header': function (newValue) {
       this.updateLayoutHeaderVisible(newValue)
