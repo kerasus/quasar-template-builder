@@ -5,25 +5,7 @@ const appLanguages = languages.filter(lang =>
 )
 
 export default {
-  drawer: false,
-  confirmDialog: {
-    show: false,
-    message: 'اطمینان دارید؟',
-    button: {
-      no: 'خیر',
-      yes: 'بله'
-    }
-  },
-  windowSize: {
-    x: 0,
-    y: 0
-  },
-  bubbleSize: 600,
-  appBar: true,
-  ColumnsWidth: {
-    left: 0,
-    right: 0
-  },
+
   layoutView: 'lHh Lpr lFf',
   layoutHeader: true,
   layoutHeaderVisible: true,
@@ -60,18 +42,4 @@ export default {
   layoutFooterBordered: false,
   footerCustomClass: '',
 
-  headerTitle: {
-    name: 'app',
-    path: []
-  },
-  headerWithBackground: false,
-  headerTitleCentered: false,
-  headerShowTitle: true,
-  headerShowBtnSearch: true,
-  headerShowBtnBack: false,
-  headerShowBtnShare: false,
-  lang: 'fa',
-  langOptions: appLanguages.map(lang => ({
-    label: lang.nativeName, value: lang.isoName
-  }))
 }

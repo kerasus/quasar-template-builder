@@ -130,7 +130,7 @@ export default defineComponent({
         leftDrawerWidth: 325,
         layoutPageContainer: true,
         layoutRightDrawer: false,
-        layoutFooter: false,
+        layoutFooter: true,
         layoutHeaderCustomClass: 'main-layout-header row',
         layoutLeftDrawerCustomClass: 'main-layout-left-drawer',
         layoutPageContainerCustomClass: 'main-layout-container',
