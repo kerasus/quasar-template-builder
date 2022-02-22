@@ -1,33 +1,6 @@
 <template>
-  <quasar-template-builder v-model:value="properties" @drawerClosed="drawerMode">
-    <template #header>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title> Quasar App </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </template>
+  <quasar-template-builder v-model:value="properties">
     <template #left-drawer>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </template>
-    <template #right-drawer>
       <q-list>
         <q-item-label header> Essential Links </q-item-label>
 
@@ -42,9 +15,6 @@
       <router-view :key="$route.name" />
     </template>
     <template #footer>
-      <div class="bg-accent">
-        footer
-      </div>
     </template>
   </quasar-template-builder>
 </template>
@@ -98,7 +68,7 @@ const linksList = [
   },
 ];
 
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "MainLayout",
@@ -116,25 +86,22 @@ export default defineComponent({
       showBtn: false,
       tab: 'home',
       properties: {
-        layoutView: 'lHh Lpr lFf',
         layoutHeader: true,
-        layoutHeaderVisible: true,
+        layoutHeaderVisible: false,
         layoutHeaderReveal: false,
         layoutHeaderElevated: false,
         layoutHeaderBordered: false,
-        layoutLeftDrawer: true,
-        layoutLeftDrawerVisible: true,
+        layoutLeftDrawer: false,
+        layoutLeftDrawerVisible: false,
         layoutLeftDrawerOverlay: false,
         layoutLeftDrawerElevated: false,
         layoutLeftDrawerBordered: false,
-        leftDrawerWidth: 325,
-        layoutPageContainer: true,
+        layoutLeftDrawerWidth: 325,
+        layoutPageContainer: false,
         layoutRightDrawer: false,
-        layoutFooter: true,
-        layoutHeaderCustomClass: 'main-layout-header row',
-        layoutLeftDrawerCustomClass: 'main-layout-left-drawer',
-        layoutPageContainerCustomClass: 'main-layout-container',
-        menuIcon: 'menu'
+        layoutFooter: false,
+        layoutHeaderCustomClass: 'bg-red',
+        layoutRightDrawerCustomClass: 'bg-blue',
       }
     }
   },

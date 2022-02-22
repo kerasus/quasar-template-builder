@@ -21,7 +21,6 @@
               <q-toggle v-model="pick.footer" label="I want a QFooter" />
               <q-toggle v-model="pick.left" label="I want a left-side QDrawer" />
               <q-toggle v-model="pick.right" label="I want a right-side QDrawer" />
-              <q-toggle :disable="!pick.header" v-model="pick.navtabs" label="I want navigation tabs (requires QHeader)" />
             </div>
           </q-step>
 
@@ -277,36 +276,6 @@ import {
   mdiMenu, mdiViewDashboard, mdiCog, mdiPlayCircleOutline
 } from '@quasar/extras/mdi-v5'
 
-function getMeta (title, desc) {
-  return {
-    title: {
-      name: 'title',
-      content: title
-    },
-    ogTitle: {
-      property: 'og:title',
-      content: title
-    },
-    twitterTitle: {
-      name: 'twitter:title',
-      content: title
-    },
-
-    description: {
-      name: 'description',
-      content: desc
-    },
-    ogDesc: {
-      property: 'og:description',
-      content: desc
-    },
-    twitterDesc: {
-      name: 'twitter:description',
-      content: desc
-    }
-  }
-}
-
 export default {
   name: 'Settings',
   created () {
@@ -329,10 +298,10 @@ export default {
       } else if (newValue === 'bordered') {
         this.updateLayoutHeaderElevated(false)
         this.updateLayoutHeaderBordered(true)
+      } else if (newValue === 'none'){
+        this.updateLayoutHeaderElevated(false)
+        this.updateLayoutHeaderBordered(false)
       }
-    },
-    'pick.navtabs': function (newValue) {
-      this.updateLayoutHeaderNavTabs(newValue)
     },
     'pick.left': function (newValue) {
       this.updateLayoutLeftDrawer(newValue)
@@ -401,7 +370,9 @@ export default {
       this.pick.header = newValue
     },
     layoutHeaderVisible: function (newValue) {
+      console.log('1', this.play.header)
       this.play.header = newValue
+      console.log('2', this.play.header)
     },
     layoutHeaderReveal: function (newValue) {
       this.cfg.headerReveal = newValue
@@ -472,7 +443,6 @@ export default {
       'updateLayoutHeaderReveal',
       'updateLayoutHeaderElevated',
       'updateLayoutHeaderBordered',
-      'updateLayoutHeaderNavTabs',
       'updateLayoutLeftDrawer',
       'updateLayoutLeftDrawerVisible',
       'updateLayoutLeftDrawerBehavior',
@@ -517,7 +487,6 @@ export default {
         this.updateLayoutHeaderElevated(false)
         this.updateLayoutHeaderBordered(true)
       }
-      this.pick.navtabs = this.layoutHeaderNavTabs
       this.pick.left = this.layoutLeftDrawer
       this.play.left = this.layoutLeftDrawerVisible
       this.cfg.leftBehavior = this.layoutLeftDrawerBehavior
@@ -553,13 +522,6 @@ export default {
       }
     }
   },
-  meta: {
-    title: 'Layout Builder',
-    meta: getMeta(
-      'Layout Builder | Quasar Framework',
-      'Tool to build Quasar layouts. Configure the layout parts then export the code.'
-    )
-  },
   data () {
     return {
       topL: 'l',
@@ -570,7 +532,6 @@ export default {
       bottomL: 'f',
       bottomC: 'F',
       bottomR: 'f',
-      navTabModel: 'tab1',
       step: 'pick',
       exportDialog: false,
       pick: {
@@ -578,7 +539,6 @@ export default {
         footer: true,
         left: true,
         right: true,
-        navtabs: true
       },
       cfg: {
         headerReveal: false,
@@ -609,7 +569,6 @@ export default {
       'layoutHeaderReveal',
       'layoutHeaderElevated',
       'layoutHeaderBordered',
-      'layoutHeaderNavTabs',
       'layoutLeftDrawer',
       'layoutLeftDrawerVisible',
       'layoutLeftDrawerBehavior',
@@ -732,7 +691,8 @@ export default {
     },
     onCreate () {
       return this.initialData()
-    }
+    },
+
   }
 }
 </script>

@@ -1,45 +1,124 @@
-import languages from 'quasar/lang/index.json'
-
-const appLanguages = languages.filter(lang =>
-  ['fa', 'en-us'].includes(lang.isoName)
-)
-
 export default {
 
   layoutView: 'lHh Lpr lFf',
-  layoutHeader: true,
-  layoutHeaderVisible: true,
-  layoutHeaderReveal: false,
-  layoutHeaderElevated: false,
-  layoutHeaderBordered: false,
-  headerCustomClass: '',
+  layoutHeader: {
+    type: Boolean,
+    default: true
+  },
+  layoutHeaderVisible: {
+    type: Boolean,
+    default: false
+  },
+  layoutHeaderReveal: {
+    type: Boolean,
+    default: false
+  },
+  layoutHeaderElevated: {
+    type: Boolean,
+    default: false
+  },
+  layoutHeaderBordered: {
+    type: Boolean,
+    default: false
+  },
+  headerCustomClass: {
+    type: String,
+    default: ''
+  },
 
-  layoutHeaderNavTabs: true,
-  layoutHeaderNavTabsModel: 1,
+  layoutLeftDrawer: {
+    type: Boolean,
+    default: false
+  },
+  layoutLeftDrawerVisible: {
+    type: Boolean,
+    default: false
+  },
+  layoutLeftDrawerBehavior: {
+        type: String,
+        default: 'default'
+      },
+  layoutLeftDrawerOverlay: {
+    type: Boolean,
+    default: false
+  },
+  layoutLeftDrawerElevated: {
+    type: Boolean,
+    default: false
+  },
+  layoutLeftDrawerBordered: {
+    type: Boolean,
+    default: false
+  },
+  leftDrawerCustomClass: {
+    type: String,
+    default: ''
+  },
+  leftDrawerWidth: {
+    type: Number,
+    default: 300
+  },
 
-  layoutLeftDrawer: false,
-  layoutLeftDrawerVisible: false,
-  layoutLeftDrawerBehavior: 'default',
-  layoutLeftDrawerOverlay: false,
-  layoutLeftDrawerElevated: false,
-  layoutLeftDrawerBordered: false,
-  leftDrawerCustomClass: '',
+  layoutRightDrawer: {
+    type: Boolean,
+    default: false
+  },
+  layoutRightDrawerVisible: {
+    type: Boolean,
+    default: false
+  },
+  layoutRightDrawerBehavior: {
+    type: String,
+    default: 'default'
+  },
+  layoutRightDrawerOverlay: {
+    type: Boolean,
+    default: false
+  },
+  layoutRightDrawerElevated: {
+    type: Boolean,
+    default: false
+  },
+  layoutRightDrawerBordered: {
+    type: Boolean,
+    default: false
+  },
+  rightDrawerCustomClass: {
+    type: String,
+    default: ''
+  },
+  rightDrawerWidth: {
+    type: Number,
+    default: 300
+  },
 
-  layoutRightDrawer: false,
-  layoutRightDrawerVisible: false,
-  layoutRightDrawerBehavior: 'default',
-  layoutRightDrawerOverlay: false,
-  layoutRightDrawerElevated: false,
-  layoutRightDrawerBordered: false,
-  rightDrawerCustomClass: '',
+  pageContainerCustomClass: {
+    type: String,
+    default: ''
+  },
 
-  pageContainerCustomClass: '',
-
-  layoutFooter: false,
-  layoutFooterVisible: true,
-  layoutFooterReveal: false,
-  layoutFooterElevated: false,
-  layoutFooterBordered: false,
-  footerCustomClass: '',
-
+  layoutFooter: {
+    type: Boolean,
+    default: false
+  },
+  layoutFooterVisible: {
+    type: Boolean,
+    default: false
+  },
+  layoutFooterReveal: {
+    type: Boolean,
+    default: false
+  },
+  layoutFooterElevated: {
+    type: Boolean,
+    default: false
+  },
+  layoutFooterBordered: {
+    type: Boolean,
+    default: false
+  },
+  footerCustomClass: {
+    type: String,
+    default: ''
+  }
 }

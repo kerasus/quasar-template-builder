@@ -1,39 +1,30 @@
-export function updateDrawer (context, data) {
-  context.commit('updateDrawer', data)
-}
-// --------------------------------------------------layout ---------------------
-
-export function setHeaderWithBackground (context, data) {
-  context.commit('updateHeaderWithBackground', data)
-  context.commit('updateHeaderShowTitle', !data)
-  context.commit('updateHeaderShowBtnSearch', !data)
-  context.commit('updateHeaderShowBtnBack', !data)
-  context.commit('updateHeaderShowBtnShare', !data)
-}
-
-export function showHeaderWithSearch (context, data) {
-  context.commit('headerShowTitle', true)
-  context.commit('updateHeaderTitle', data)
-  context.commit('updateHeaderTitleCentered', false)
-  context.commit('updateHeaderShowBtnSearch', true)
-  context.commit('updateHeaderShowBtnBack', false)
-  context.commit('updateHeaderShowBtnShare', false)
-}
-
-export function showHeaderWithBackBtn (context, data) {
-  context.commit('headerShowTitle', true)
-  context.commit('updateHeaderTitle', data)
-  context.commit('updateHeaderTitleCentered', true)
-  context.commit('updateHeaderShowBtnSearch', false)
-  context.commit('updateHeaderShowBtnBack', true)
-  context.commit('updateHeaderShowBtnShare', false)
-}
-
-export function showHeaderWithBackAndShareBtn (context, data) {
-  context.commit('headerShowTitle', true)
-  context.commit('updateHeaderTitle', data)
-  context.commit('updateHeaderTitleCentered', true)
-  context.commit('updateHeaderShowBtnSearch', false)
-  context.commit('updateHeaderShowBtnBack', true)
-  context.commit('updateHeaderShowBtnShare', true)
+export function updateStore(context, data) {
+  context.commit('updateLayoutView', data.layoutView)
+  context.commit('updateLayoutHeader', data.layoutHeader)
+  context.commit('updateLayoutHeaderReveal', data.layoutHeaderReveal)
+  context.commit('updateLayoutHeaderElevated', data.layoutHeaderElevated)
+  context.commit('updateLayoutHeaderBordered', data.layoutHeaderBordered)
+  context.commit('updateLayoutLeftDrawer', data.layoutLeftDrawer)
+  context.commit('updateLayoutLeftDrawerVisible', data.layoutLeftDrawerVisible)
+  context.commit('updateLayoutLeftDrawerBehavior', data.layoutLeftDrawerBehavior)
+  context.commit('updateLayoutLeftDrawerOverlay', data.layoutLeftDrawerOverlay)
+  context.commit('updateLayoutLeftDrawerElevated', data.layoutLeftDrawerElevated)
+  context.commit('updateLayoutLeftDrawerBordered', data.layoutLeftDrawerBordered)
+  context.commit('updateLayoutRightDrawer', data.layoutRightDrawer)
+  context.commit('updateLayoutRightDrawerVisible', data.layoutRightDrawerVisible)
+  context.commit('updateLayoutRightDrawerOverlay', data.layoutRightDrawerOverlay)
+  context.commit('updateLayoutRightDrawerBehavior', data.layoutRightDrawerBehavior)
+  context.commit('updateLayoutRightDrawerElevated', data.layoutRightDrawerElevated)
+  context.commit('updateLayoutRightDrawerBordered', data.layoutRightDrawerBordered)
+  context.commit('updateLayoutFooter', data.layoutFooter)
+  context.commit('updateLayoutFooterReveal', data.layoutFooterReveal)
+  context.commit('updateLayoutFooterElevated', data.layoutFooterElevated)
+  context.commit('updateLayoutFooterBordered', data.layoutFooterBordered)
+  context.commit('updateLayoutFooterCustomClass', data.layoutFooterCustomClass)
+  context.commit('updateLayoutHeaderCustomClass', data.layoutHeaderCustomClass)
+  context.commit('updateLayoutLeftDrawerCustomClass', data.layoutLeftDrawerCustomClass)
+  context.commit('updateLayoutRightDrawerCustomClass', data.layoutLeftDrawerCustomClass)
+  context.commit('updateLayoutPageContainerCustomClass', data.layoutPageContainerCustomClass)
+  context.commit('updateLayoutRightDrawerWidth', data.layoutRightDrawerWidth)
+  context.commit('updateLayoutLeftDrawerWidth', data.layoutLeftDrawerWidth)
 }
