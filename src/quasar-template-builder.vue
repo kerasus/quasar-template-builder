@@ -34,7 +34,7 @@
         :elevated="layoutLeftDrawerElevated"
         :bordered="layoutLeftDrawerBordered"
         :class=" layoutLeftDrawerCustomClass"
-        :behavior="layoutLeftDrawerBehavior"
+        :behavior="screenSize"
         :width="layoutLeftDrawerWidth"
         side="left"
         @hide="onHideLeft"
@@ -51,7 +51,7 @@
         :elevated="layoutRightDrawerElevated"
         :bordered="layoutRightDrawerBordered"
         :class="layoutRightDrawerCustomClass"
-        :behavior="layoutRightDrawerBehavior"
+        :behavior="screenSize"
         :width="layoutRightDrawerWidth"
         side="right"
         @hide="onHideRight"
@@ -96,6 +96,7 @@ export default {
   created() {
     const options = Object.assign(this.defaultProperties, this.value)
     this.updateStore(options)
+    return this.screenSize
   },
   data() {
     return {
@@ -178,6 +179,12 @@ export default {
     },
     footerVisibility() {
       return !this.layoutFooterVisible
+    },
+    screenSize () {
+      console.log(this.$q.screen.lt.sm)
+      return this.$q.screen.lt.sm ?
+          this.updateLayoutLeftDrawerBehavior('default') && this.updateLayoutRightDrawerBehavior('default')
+          : this.updateLayoutLeftDrawerBehavior('mobile') && this.updateLayoutRightDrawerBehavior('mobile')
     }
   },
   watch: {
@@ -198,10 +205,12 @@ export default {
     ...mapMutations('AppLayout', [
       'updateLayoutLeftDrawerVisible',
       'updateLayoutRightDrawerVisible',
+      'updateLayoutLeftDrawerBehavior',
+      'updateLayoutRightDrawerBehavior'
 
     ]),
     ...mapActions('AppLayout',[
-        'updateStore'
+      'updateStore'
     ]),
     onHideLeft() {
       this.updateLayoutLeftDrawerVisible(false)

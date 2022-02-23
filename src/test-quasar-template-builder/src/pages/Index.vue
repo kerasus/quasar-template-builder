@@ -319,9 +319,9 @@ export default {
     'cfg.leftBehavior': function (newValue) {
       this.updateLayoutLeftDrawerBehavior(newValue)
       if(newValue === 'mobile'){
-        this.layoutLeftDrawerVisible = false
+        this.updateLayoutLeftDrawerVisible(false)
       } else if(newValue === 'default' || newValue === 'desktop') {
-        this.layoutLeftDrawerVisible = true
+        this.updateLayoutLeftDrawerVisible(true)
       }
     },
     'cfg.leftOverlay': function (newValue) {
@@ -348,9 +348,9 @@ export default {
     'cfg.rightBehavior': function (newValue) {
       this.updateLayoutRightDrawerBehavior(newValue)
       if(newValue === 'mobile'){
-        this.layoutRightDrawerVisible = false
+        this.updateLayoutRightDrawerVisible(false)
       } else if(newValue === 'default' || newValue === 'desktop') {
-        this.layoutRightDrawerVisible = true
+        this.updateLayoutRightDrawerVisible(true)
       }
     },
     'cfg.rightOverlay': function (newValue) {
@@ -616,15 +616,6 @@ export default {
       'layoutFooterElevated',
       'layoutFooterBordered'
     ]),
-    isContracted () {
-      return this.$q.screen.lt.sm === true || (
-        this.$q.screen.md === true &&
-        this.play.left === true &&
-        this.cfg.leftOverlay === false &&
-        this.play.right === true &&
-        this.cfg.rightOverlay === false
-      )
-    },
     view () {
       const
         top = `${this.topL}${this.topC}${this.topR}`,
