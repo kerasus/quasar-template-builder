@@ -1,88 +1,84 @@
 <template>
   <q-layout :view="layoutView">
-
     <q-header
-        v-if="layoutHeader"
-        :reveal="layoutHeaderReveal"
-        :elevated="layoutHeaderElevated"
-        :bordered="layoutHeaderBordered"
-        :class="[layoutHeaderCustomClass, headerVisibility ? 'hidden': '']"
+      v-if="layoutHeader"
+      :reveal="layoutHeaderReveal"
+      :elevated="layoutHeaderElevated"
+      :bordered="layoutHeaderBordered"
+      :class="[layoutHeaderCustomClass, headerVisibility ? 'hidden': '']"
     >
       <slot name="header">
-        <q-toolbar class="full-width" style="width: 100%; justify-content: space-between">
+        <q-toolbar
+          class="full-width"
+          style="width: 100%; justify-content: space-between"
+        >
           <q-btn
-              v-if="!layoutLeftDrawerVisible"
-              icon="menu"
-              side="left"
-              @click="toggleLeftDrawer"
+            v-if="!layoutLeftDrawerVisible"
+            icon="menu"
+            side="left"
+            @click="toggleLeftDrawer"
           />
           <q-btn
-              v-if="!layoutRightDrawerVisible "
-              icon="menu"
-              side="right"
-              @click="toggleRightDrawer"
+            v-if="!layoutRightDrawerVisible "
+            icon="menu"
+            side="right"
+            @click="toggleRightDrawer"
           />
         </q-toolbar>
       </slot>
     </q-header>
-
     <q-drawer
-        v-if="layoutLeftDrawer"
-        show-if-above
-        v-model="defaultProperties.layoutLeftDrawerVisible"
-        :overlay="layoutLeftDrawerOverlay"
-        :elevated="layoutLeftDrawerElevated"
-        :bordered="layoutLeftDrawerBordered"
-        :class=" layoutLeftDrawerCustomClass"
-        :behavior="screenSize"
-        :width="layoutLeftDrawerWidth"
-        side="left"
-        @hide="onHideLeft"
-        @show=""
+      v-if="layoutLeftDrawer"
+      v-model="defaultProperties.layoutLeftDrawerVisible"
+      show-if-above
+      :overlay="layoutLeftDrawerOverlay"
+      :elevated="layoutLeftDrawerElevated"
+      :bordered="layoutLeftDrawerBordered"
+      :class=" layoutLeftDrawerCustomClass"
+      :behavior="screenSize"
+      :width="layoutLeftDrawerWidth"
+      side="left"
+      @hide="onHideLeft"
     >
-      <slot name="left-drawer"></slot>
+      <slot name="left-drawer" />
     </q-drawer>
 
     <q-drawer
-        v-if="layoutRightDrawer"
-        show-if-above
-        v-model="defaultProperties.layoutRightDrawerVisible"
-        :overlay="layoutRightDrawerOverlay"
-        :elevated="layoutRightDrawerElevated"
-        :bordered="layoutRightDrawerBordered"
-        :class="layoutRightDrawerCustomClass"
-        :behavior="screenSize"
-        :width="layoutRightDrawerWidth"
-        side="right"
-        @hide="onHideRight"
+      v-if="layoutRightDrawer"
+      v-model="defaultProperties.layoutRightDrawerVisible"
+      show-if-above
+      :overlay="layoutRightDrawerOverlay"
+      :elevated="layoutRightDrawerElevated"
+      :bordered="layoutRightDrawerBordered"
+      :class="layoutRightDrawerCustomClass"
+      :behavior="screenSize"
+      :width="layoutRightDrawerWidth"
+      side="right"
+      @hide="onHideRight"
     >
-      <slot name="right-drawer"></slot>
+      <slot name="right-drawer" />
     </q-drawer>
 
     <q-page-container>
-      <slot name="content"></slot>
+      <slot name="content" />
     </q-page-container>
 
     <q-footer
-        v-if="layoutFooter"
-        :reveal="layoutFooterReveal"
-        :elevated="layoutFooterElevated"
-        :bordered="layoutFooterBordered"
-        :class="[layoutFooterCustomClass, footerVisibility ? 'hidden': '']"
+      v-if="layoutFooter"
+      :reveal="layoutFooterReveal"
+      :elevated="layoutFooterElevated"
+      :bordered="layoutFooterBordered"
+      :class="[layoutFooterCustomClass, footerVisibility ? 'hidden': '']"
     >
       <slot name="footer">
-        <q-toolbar>
-        </q-toolbar>
+        <q-toolbar />
       </slot>
     </q-footer>
-
   </q-layout>
 </template>
 
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
-import {QuasarTemplateBuilderAppLayout} from "../index";
-import * as getters from "./test-quasar-template-builder/src/store/AppLayout/getters";
 
 export default {
   name: 'QuasarTemplateBuilder',

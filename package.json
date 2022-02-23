@@ -2,32 +2,12 @@
   "name": "quasar-template-builder",
   "version": "1.0.1",
   "description": "template builder for quasar",
-  "main": "index.js",
-  "keywords": [
-    "vue",
-    "template",
-    "builder",
-    "quasar"
-  ],
-  "contributors": [
-    {
-      "name": "Ali Esmaeeli",
-      "email": "aliesmaeeli20@gmail.com",
-      "url": "https://github.com/kerasus/quasar-template-builder"
-    },
-    {
-      "name": "Maryam Razmjoo",
-      "email": "MaryamRazmjoo76@yahoo.com",
-      "url": "https://github.com/MaryamRazmjoo/quasar-template-builder"
-    }
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/kerasus/quasar-template-builder",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint src"
   },
+  "main": "index.js",
   "dependencies": {
     "@babel/eslint-parser": "^7.16.5",
     "@quasar/extras": "^1.0.0",
@@ -95,9 +75,29 @@
     "last 10 iOS versions",
     "last 5 Opera versions"
   ],
+  "contributors": [
+    {
+      "name": "Ali Esmaeeli",
+      "email": "aliesmaeeli20@gmail.com",
+      "url": "https://github.com/kerasus/quasar-template-builder"
+    },
+    {
+      "name": "Maryam Razmjoo",
+      "email": "MaryamRazmjoo76@yahoo.com",
+      "url": "https://github.com/MaryamRazmjoo/quasar-template-builder"
+    }
+  ],
   "engines": {
     "node": ">= 12.22.1",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
-  }
+  },
+  "homepage": "https://github.com/kerasus/quasar-template-builder",
+  "keywords": [
+    "vue",
+    "template",
+    "builder",
+    "quasar"
+  ],
+  "license": "MIT"
 }
