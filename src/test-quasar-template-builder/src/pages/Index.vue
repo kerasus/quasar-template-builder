@@ -309,13 +309,14 @@ export default {
     },
     'pick.left': function (newValue) {
       this.updateLayoutLeftDrawer(newValue)
+      this.updateLayoutLeftDrawerVisible(newValue)
     },
     'play.left': function (newValue) {
       if(this.layoutLeftDrawer){
         this.updateLayoutLeftDrawerVisible(newValue)
       }
     },
-    'cfg.leftBehavior': function (newValue, oldValue) {
+    'cfg.leftBehavior': function (newValue) {
       this.updateLayoutLeftDrawerBehavior(newValue)
       if(newValue === 'mobile'){
         this.layoutLeftDrawerVisible = false
@@ -337,6 +338,7 @@ export default {
     },
     'pick.right': function (newValue) {
       this.updateLayoutRightDrawer(newValue)
+      this.updateLayoutRightDrawerVisible(newValue)
     },
     'play.right': function (newValue) {
       if(this.layoutRightDrawer){

@@ -9,7 +9,7 @@
         :class="[layoutHeaderCustomClass, headerVisibility ? 'hidden': '']"
     >
       <slot name="header">
-        <q-toolbar class="full-width" style="width: 100%">
+        <q-toolbar class="full-width" style="width: 100%; justify-content: space-between">
           <q-btn
               v-if="!layoutLeftDrawerVisible"
               icon="menu"
