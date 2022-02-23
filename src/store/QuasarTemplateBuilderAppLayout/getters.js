@@ -1,67 +1,3 @@
-export function drawer (state) {
-  return state.drawer
-}
-
-export function appBar (state) {
-  return state.appBar
-}
-
-export function windowSize (state) {
-  return state.windowSize
-}
-
-export function bubbleSize (state) {
-  return state.bubbleSize
-}
-
-export function ColumnsWidth (state) {
-  return state.ColumnsWidth
-}
-// -------------------------------------------------------layout--------------------------
-export function lang (state) {
-  return state.lang
-}
-
-export function langOptions (state) {
-  return state.langOptions
-}
-
-export function appName (state) {
-  return state.appName
-}
-
-export function headerWithBackground (state) {
-  return state.headerWithBackground
-}
-
-export function headerTitleName (state) {
-  return state.headerTitle.name
-}
-
-export function headerTitlePath (state) {
-  return state.headerTitle.path
-}
-
-export function headerShowTitle (state) {
-  return state.headerShowTitle
-}
-
-export function headerShowBtnSearch (state) {
-  return state.headerShowBtnSearch
-}
-
-export function headerShowBtnBack (state) {
-  return state.headerShowBtnBack
-}
-
-export function headerShowBtnShare (state) {
-  return state.headerShowBtnShare
-}
-
-export function headerTitleCentered (state) {
-  return state.headerTitleCentered
-}
-
 export function layoutView (state) {
   return state.layoutView
 }
@@ -84,14 +20,6 @@ export function layoutHeaderElevated (state) {
 
 export function layoutHeaderBordered (state) {
   return state.layoutHeaderBordered
-}
-
-export function layoutHeaderNavTabs (state) {
-  return state.layoutHeaderNavTabs
-}
-
-export function layoutHeaderNavTabsModel (state) {
-  return state.layoutHeaderNavTabsModel
 }
 
 export function layoutHeaderCustomClass (state) {
@@ -126,6 +54,10 @@ export function layoutLeftDrawerCustomClass (state) {
   return state.leftDrawerCustomClass
 }
 
+export function layoutLeftDrawerWidth (state) {
+  return state.leftDrawerWidth
+}
+
 export function layoutRightDrawer (state) {
   return state.layoutRightDrawer
 }
@@ -154,6 +86,10 @@ export function layoutRightDrawerCustomClass (state) {
   return state.rightDrawerCustomClass
 }
 
+export function layoutRightDrawerWidth (state) {
+  return state.rightDrawerWidth
+}
+
 export function layoutFooter (state) {
   return state.layoutFooter
 }
@@ -176,4 +112,8 @@ export function layoutFooterBordered (state) {
 
 export function layoutFooterCustomClass (state) {
   return state.footerCustomClass
+}
+
+export function layoutPageContainerCustomClass (state) {
+  return state.pageContainerCustomClass
 }
