@@ -5,14 +5,14 @@
         <q-item-label header> Essential Links </q-item-label>
 
         <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
+            v-for="link in essentialLinks"
+            :key="link.title"
+            v-bind="link"
         />
       </q-list>
     </template>
     <template #content>
-      <router-view :key="$route.name" />
+      ddd
     </template>
     <template #footer>
     </template>
@@ -113,3 +113,15 @@ export default defineComponent({
 
 });
 </script>
+
+<style lang="sass">
+body
+  background: $grey-1
+.export-code
+  .doc-code__inner
+    max-height: 50vh
+  .doc-code + div
+    right: 22px !important
+  .q-badge
+    right: 72px !important
+</style>
