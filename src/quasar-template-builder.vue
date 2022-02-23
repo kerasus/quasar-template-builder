@@ -50,7 +50,7 @@
         :overlay="layoutRightDrawerOverlay"
         :elevated="layoutRightDrawerElevated"
         :bordered="layoutRightDrawerBordered"
-        :class="[ layoutRightDrawerCustomClass , rightVisibility ? 'hidden': '']"
+        :class="layoutRightDrawerCustomClass"
         :behavior="layoutRightDrawerBehavior"
         :width="layoutRightDrawerWidth"
         side="right"
@@ -172,9 +172,6 @@ export default {
     ]),
     headerVisibility() {
       return !this.layoutHeaderVisible
-    },
-    leftVisibility() {
-      return !this.layoutLeftDrawerVisible
     },
     rightVisibility() {
       return !this.layoutRightDrawerVisible

@@ -98,7 +98,7 @@ export default defineComponent({
         layoutLeftDrawerBordered: false,
         layoutLeftDrawerWidth: 325,
         layoutPageContainer: false,
-        layoutRightDrawer: false,
+        layoutRightDrawer: true,
         layoutFooter: false,
         layoutHeaderCustomClass: 'bg-red',
         layoutRightDrawerCustomClass: 'bg-blue',

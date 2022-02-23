@@ -284,9 +284,13 @@ export default {
   watch: {
     'pick.header': function (newValue) {
       this.updateLayoutHeader(newValue)
+      this.updateLayoutHeaderVisible(newValue)
     },
     'play.header': function (newValue) {
-      this.updateLayoutHeaderVisible(newValue)
+      if(this.layoutHeader){
+        this.updateLayoutHeaderVisible(newValue)
+
+      }
     },
     'cfg.headerReveal': function (newValue) {
       this.updateLayoutHeaderReveal(newValue)
@@ -307,10 +311,17 @@ export default {
       this.updateLayoutLeftDrawer(newValue)
     },
     'play.left': function (newValue) {
-      this.updateLayoutLeftDrawerVisible(newValue)
+      if(this.layoutLeftDrawer){
+        this.updateLayoutLeftDrawerVisible(newValue)
+      }
     },
-    'cfg.leftBehavior': function (newValue) {
+    'cfg.leftBehavior': function (newValue, oldValue) {
       this.updateLayoutLeftDrawerBehavior(newValue)
+      if(newValue === 'mobile'){
+        this.layoutLeftDrawerVisible = false
+      } else if(newValue === 'default' || newValue === 'desktop') {
+        this.layoutLeftDrawerVisible = true
+      }
     },
     'cfg.leftOverlay': function (newValue) {
       this.updateLayoutLeftDrawerOverlay(newValue)
@@ -328,10 +339,17 @@ export default {
       this.updateLayoutRightDrawer(newValue)
     },
     'play.right': function (newValue) {
-      this.updateLayoutRightDrawerVisible(newValue)
+      if(this.layoutRightDrawer){
+        this.updateLayoutRightDrawerVisible(newValue)
+      }
     },
     'cfg.rightBehavior': function (newValue) {
       this.updateLayoutRightDrawerBehavior(newValue)
+      if(newValue === 'mobile'){
+        this.layoutRightDrawerVisible = false
+      } else if(newValue === 'default' || newValue === 'desktop') {
+        this.layoutRightDrawerVisible = true
+      }
     },
     'cfg.rightOverlay': function (newValue) {
       this.updateLayoutRightDrawerOverlay(newValue)
@@ -347,9 +365,12 @@ export default {
     },
     'pick.footer': function (newValue) {
       this.updateLayoutFooter(newValue)
+      this.updateLayoutFooterVisible(newValue)
     },
     'play.footer': function (newValue) {
-      this.updateLayoutFooterVisible(newValue)
+      if(this.layoutFooter){
+        this.updateLayoutFooterVisible(newValue)
+      }
     },
     'cfg.footerReveal': function (newValue) {
       this.updateLayoutFooterReveal(newValue)
@@ -370,9 +391,7 @@ export default {
       this.pick.header = newValue
     },
     layoutHeaderVisible: function (newValue) {
-      console.log('1', this.play.header)
       this.play.header = newValue
-      console.log('2', this.play.header)
     },
     layoutHeaderReveal: function (newValue) {
       this.cfg.headerReveal = newValue
@@ -387,7 +406,9 @@ export default {
       this.pick.left = newValue
     },
     layoutLeftDrawerVisible: function (newValue) {
-      this.play.left = newValue
+      if(this.layoutLeftDrawer){
+        this.play.left = newValue
+      }
     },
     layoutLeftDrawerBehavior: function (newValue) {
       this.cfg.leftBehavior = newValue
@@ -405,7 +426,9 @@ export default {
       this.pick.right = newValue
     },
     layoutRightDrawerVisible: function (newValue) {
-      this.play.right = newValue
+      if(this.layoutRightDrawer){
+        this.play.right = newValue
+      }
     },
     layoutRightDrawerBehavior: function (newValue) {
       this.cfg.rightBehavior = newValue
@@ -488,7 +511,9 @@ export default {
         this.updateLayoutHeaderBordered(true)
       }
       this.pick.left = this.layoutLeftDrawer
-      this.play.left = this.layoutLeftDrawerVisible
+      if(this.layoutLeftDrawer){
+        this.play.left = this.layoutLeftDrawerVisible
+      }
       this.cfg.leftBehavior = this.layoutLeftDrawerBehavior
       this.cfg.leftOverlay = this.layoutLeftDrawerOverlay
       if (this.cfg.leftSep === 'elevated') {
@@ -499,7 +524,9 @@ export default {
         this.updateLayoutLeftDrawerBordered(true)
       }
       this.pick.right = this.layoutRightDrawer
-      this.play.right = this.layoutRightDrawerVisible
+      if(this.layoutRightDrawer){
+        this.play.right = this.layoutRightDrawerVisible
+      }
       this.cfg.rightBehavior = this.layoutRightDrawerBehavior
       this.cfg.rightOverlay = this.layoutRightDrawerOverlay
       if (this.cfg.rightSep === 'elevated') {
@@ -557,7 +584,7 @@ export default {
         footer: true,
         left: false,
         right: false,
-        scroll: true
+        scroll: false
       }
     }
   },

@@ -3,7 +3,7 @@ export default {
   layoutView: 'lHh Lpr lFf',
   layoutHeader: {
     type: Boolean,
-    default: true
+    default: false
   },
   layoutHeaderVisible: {
     type: Boolean,
