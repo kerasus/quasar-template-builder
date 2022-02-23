@@ -100,8 +100,8 @@ export default defineComponent({
         layoutPageContainer: false,
         layoutRightDrawer: true,
         layoutFooter: false,
-        layoutHeaderCustomClass: 'bg-red',
-        layoutRightDrawerCustomClass: 'bg-blue',
+        layoutHeaderCustomClass: '',
+        layoutRightDrawerCustomClass: 'bg-red',
       }
     }
   },
