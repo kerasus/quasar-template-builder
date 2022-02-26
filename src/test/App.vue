@@ -1,5 +1,8 @@
 <template>
-  <quasar-template-builder v-model="properties">
+  <quasar-template-builder
+    v-model="properties"
+    @onResize="test"
+  >
     <template #left-drawer>
       <q-list>
         <q-item-label header>
@@ -97,7 +100,6 @@ export default defineComponent({
     return {
       essentialLinks: linksList,
       leftDrawerOpen: false,
-      windowSize: document.documentElement.clientWidth,
       showBtn: false,
       tab: 'home',
       properties: {
@@ -124,6 +126,13 @@ export default defineComponent({
     drawerMode (/* value */) {
       this.properties.layoutLeftDrawerVisible = false
     },
+    test (val) {
+      if (val > 1024){
+        this.$store.commit('AppLayout/updateLayoutLeftDrawerBehavior', 'desktop')&& this.$store.commit('AppLayout/updateLayoutRightDrawerBehavior','desktop')
+      } else {
+        this.$store.commit('AppLayout/updateLayoutLeftDrawerBehavior', 'mobile') && this.$store.commit('AppLayout/updateLayoutRightDrawerBehavior', 'mobile')
+      }
+    }
   }
 
 });

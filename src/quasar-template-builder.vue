@@ -35,7 +35,7 @@
       :elevated="layoutLeftDrawerElevated"
       :bordered="layoutLeftDrawerBordered"
       :class=" layoutLeftDrawerCustomClass"
-      :behavior="screenSize"
+      :behavior="leftDrawerBehavior"
       :width="layoutLeftDrawerWidth"
       side="left"
       @hide="onHideLeft"
@@ -51,7 +51,7 @@
       :elevated="layoutRightDrawerElevated"
       :bordered="layoutRightDrawerBordered"
       :class="layoutRightDrawerCustomClass"
-      :behavior="screenSize"
+      :behavior="RightDrawerBehavior"
       :width="layoutRightDrawerWidth"
       side="right"
       @hide="onHideRight"
@@ -74,6 +74,7 @@
         <q-toolbar />
       </slot>
     </q-footer>
+    <q-resize-observer @resize="onResize" />
   </q-layout>
 </template>
 
@@ -92,7 +93,6 @@ export default {
   created() {
     const options = Object.assign(this.defaultProperties, this.value)
     this.updateStore(options)
-    return this.screenSize
   },
   data() {
     return {
@@ -170,17 +170,8 @@ export default {
     headerVisibility() {
       return !this.layoutHeaderVisible
     },
-    rightVisibility() {
-      return !this.layoutRightDrawerVisible
-    },
     footerVisibility() {
       return !this.layoutFooterVisible
-    },
-    screenSize () {
-      console.log(this.$q.screen.lt.sm)
-      return this.$q.screen.lt.sm ?
-          this.updateLayoutLeftDrawerBehavior('default') && this.updateLayoutRightDrawerBehavior('default')
-          : this.updateLayoutLeftDrawerBehavior('mobile') && this.updateLayoutRightDrawerBehavior('mobile')
     }
   },
   watch: {
@@ -219,6 +210,9 @@ export default {
     },
     toggleRightDrawer() {
       this.updateLayoutRightDrawerVisible(!this.layoutRightDrawerVisible)
+    },
+    onResize (size){
+      this.$emit('onResize',size)
     }
   }
 }
