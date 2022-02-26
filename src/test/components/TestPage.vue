@@ -346,9 +346,9 @@
         <q-dialog v-model="exportDialog">
           <q-card>
             <div class="bg-code export-code">
-              <doc-code lang="html">
+              <code>
                 {{ layoutExport }}
-              </doc-code>
+              </code>
             </div>
 
             <q-separator />
