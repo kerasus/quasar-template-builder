@@ -13,7 +13,6 @@
           flat
           bordered
           alternative-labels
-          :contracted="isContracted"
           color="secondary"
           style="max-width: 600px"
         >
