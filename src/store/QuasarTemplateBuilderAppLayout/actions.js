@@ -4,6 +4,7 @@ export function updateStore(context, data) {
   context.commit('updateLayoutHeaderReveal', data.layoutHeaderReveal)
   context.commit('updateLayoutHeaderElevated', data.layoutHeaderElevated)
   context.commit('updateLayoutHeaderBordered', data.layoutHeaderBordered)
+  context.commit('updateLayoutHeaderVisible', data.layoutHeaderVisible)
   context.commit('updateLayoutLeftDrawer', data.layoutLeftDrawer)
   context.commit('updateLayoutLeftDrawerVisible', data.layoutLeftDrawerVisible)
   context.commit('updateLayoutLeftDrawerBehavior', data.layoutLeftDrawerBehavior)
