@@ -115,3 +115,7 @@ export function updateLayoutLeftDrawerWidth (state, data) {
   return state.leftDrawerWidth = data
 }
 
+export function updateLayoutInjectDrawerOnScrolling (state, data) {
+  return state.leftDrawerWidth = data
+}
+

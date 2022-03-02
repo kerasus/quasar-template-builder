@@ -120,5 +120,9 @@ export default {
   footerCustomClass: {
     type: String,
     default: ''
+  },
+  injectDrawerOnScrolling: {
+    type: Boolean,
+    default: true
   }
 }

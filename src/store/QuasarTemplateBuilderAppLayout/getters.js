@@ -117,3 +117,7 @@ export function layoutFooterCustomClass (state) {
 export function layoutPageContainerCustomClass (state) {
   return state.pageContainerCustomClass
 }
+
+export function layoutInjectDrawerOnScrolling (state) {
+  return state.injectDrawerOnScrolling
+}
