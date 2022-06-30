@@ -1,6 +1,6 @@
 {
   "name": "quasar-template-builder",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "template builder for quasar",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,27 +9,26 @@
   },
   "main": "index.js",
   "dependencies": {
-    "@babel/eslint-parser": "^7.16.5",
+    "@babel/eslint-parser": "^7.18.2",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0",
     "standard": "^16.0.4",
     "vue": "^3.0.0",
-    "vuex": "^4.0.1",
-    "vuex-persistedstate": "^4.1.0"
+    "vuex": "^4.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/cli-plugin-babel": "~5.0.6",
+    "@vue/cli-plugin-eslint": "~5.0.6",
+    "@vue/cli-service": "~5.0.6",
+    "@vue/compiler-sfc": "^3.2.37",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
+    "eslint": "^8.18.0",
     "eslint-plugin-vue": "^7.0.0",
     "postcss-rtl": "^1.2.3",
     "sass": "1.32.12",
     "sass-loader": "^10.1.0",
-    "vue-cli-plugin-quasar": "~4.0.4"
+    "vue-cli-plugin-quasar": "~5.0.1"
   },
   "eslintConfig": {
     "root": true,
