@@ -38,7 +38,6 @@
       :behavior="layoutLeftDrawerBehavior"
       :width="layoutLeftDrawerWidth"
       side="left"
-      @hide="onHideLeft"
     >
       <slot name="left-drawer" />
     </q-drawer>
@@ -54,7 +53,6 @@
       :behavior="layoutRightDrawerBehavior"
       :width="layoutRightDrawerWidth"
       side="right"
-      @hide="onHideRight"
     >
       <slot name="right-drawer" />
     </q-drawer>
@@ -91,8 +89,12 @@ export default {
     }
   },
   created() {
-    const options = Object.assign(this.defaultProperties, this.value)
-    this.updateStore(options)
+    this.defaultProperties = Object.assign(this.defaultProperties, this.value)
+    this.updateStore(this.defaultProperties)
+  },
+  mounted() {
+    this.defaultProperties = Object.assign(this.defaultProperties, this.value)
+    this.updateStore(this.defaultProperties)
   },
   data() {
     return {
@@ -175,11 +177,11 @@ export default {
     }
   },
   watch: {
-    'defaultProperties.layoutLeftDrawerVisible': function (){
-      this.updateLayoutLeftDrawerVisible(this.defaultProperties.layoutLeftDrawerVisible)
+    'defaultProperties.layoutLeftDrawerVisible': function (newValue){
+      this.updateLayoutLeftDrawerVisible(newValue)
     },
-    'defaultProperties.layoutRightDrawerVisible': function (){
-      this.updateLayoutRightDrawerVisible(this.defaultProperties.layoutRightDrawerVisible)
+    'defaultProperties.layoutRightDrawerVisible': function (newValue){
+      this.updateLayoutRightDrawerVisible(newValue)
     },
     layoutLeftDrawerVisible (newValue) {
       this.defaultProperties.layoutLeftDrawerVisible = newValue
@@ -199,12 +201,6 @@ export default {
     ...mapActions('AppLayout',[
       'updateStore'
     ]),
-    onHideLeft() {
-      this.updateLayoutLeftDrawerVisible(false)
-    },
-    onHideRight() {
-      this.updateLayoutLeftDrawerVisible(false)
-    },
     toggleLeftDrawer() {
       this.updateLayoutLeftDrawerVisible(!this.layoutLeftDrawerVisible)
     },
@@ -217,7 +213,8 @@ export default {
   }
 }
 </script>
-<style>
+
+<style scoped>
 .hidden {
   display: none;
 }
