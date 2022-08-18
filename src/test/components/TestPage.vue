@@ -207,7 +207,7 @@
               </div>
             </template>
 
-            <template v-if="pick.left">
+            <template v-if="layoutLeftDrawer">
               <div class="q-pt-lg q-pb-sm text-grey-8">
                 Left-side Drawer
               </div>
@@ -300,7 +300,7 @@
               />
               <q-toggle
                 v-model="play.left"
-                :disable="!pick.left"
+                :disable="!layoutLeftDrawer"
                 label="Visible left-side Drawer"
               />
               <q-toggle
@@ -373,6 +373,19 @@ import { mapGetters, mapMutations } from 'vuex'
 import {
   mdiMenu, mdiViewDashboard, mdiCog, mdiPlayCircleOutline
 } from '@quasar/extras/mdi-v5'
+// function getComputed (state) {
+//   let mutation = 'update' + state.substring(0, 1).toUpperCase() + state.substring(1);
+//   return {
+//     set (newValue) {
+//       console.log('newValue', newValue)
+//       console.log('mutation', mutation)
+//       this[mutation](newValue)
+//     },
+//     get () {
+//       return this.$store.getters['AppLayout/'+state]
+//     }
+//   }
+// }
 
 export default {
   name: 'Settings',
@@ -502,9 +515,9 @@ export default {
     layoutHeaderBordered: function (newValue) {
       this.cfg.headerSep = newValue
     },
-    layoutLeftDrawer: function (newValue) {
-      this.pick.left = newValue
-    },
+    // layoutLeftDrawer: function (newValue) {
+    //   this.pick.left = newValue
+    // },
     layoutLeftDrawerVisible: function (newValue) {
       if(this.layoutLeftDrawer){
         this.play.left = newValue
@@ -689,6 +702,33 @@ export default {
     }
   },
   computed: {
+    // 'layoutView': getComputed('layoutView'),
+    // 'layoutHeader': getComputed('layoutHeader'),
+    // 'layoutHeaderVisible': getComputed('layoutHeaderVisible'),
+    // 'layoutHeaderReveal': getComputed('layoutHeaderReveal'),
+    // 'layoutHeaderElevated': getComputed('layoutHeaderElevated'),
+    // 'layoutHeaderBordered': getComputed('layoutHeaderBordered'),
+    // 'layoutLeftDrawer': getComputed('layoutLeftDrawer'),
+    // 'layoutLeftDrawerVisible': getComputed('layoutLeftDrawerVisible'),
+    // 'layoutLeftDrawerBehavior': getComputed('layoutLeftDrawerBehavior'),
+    // 'layoutLeftDrawerOverlay': getComputed('layoutLeftDrawerOverlay'),
+    //
+    // 'layoutLeftDrawerElevated': getComputed('layoutLeftDrawerElevated'),
+    // 'layoutLeftDrawerBordered': getComputed('layoutLeftDrawerBordered'),
+    // 'layoutRightDrawer': getComputed('layoutRightDrawer'),
+    // 'layoutView': getComputed('layoutView'),
+    // 'layoutView': getComputed('layoutView'),
+    //
+    // 'layoutView': getComputed('layoutView'),
+    // 'layoutView': getComputed('layoutView'),
+    // 'layoutView': getComputed('layoutView'),
+    // 'layoutView': getComputed('layoutView'),
+    // 'layoutView': getComputed('layoutView'),
+    //
+    // 'layoutView': getComputed('layoutView'),
+    // 'layoutView': getComputed('layoutView'),
+    // 'layoutView': getComputed('layoutView'),
+
     ...mapGetters('AppLayout', [
       'layoutView',
       'layoutHeader',
@@ -700,16 +740,19 @@ export default {
       'layoutLeftDrawerVisible',
       'layoutLeftDrawerBehavior',
       'layoutLeftDrawerOverlay',
+
       'layoutLeftDrawerElevated',
       'layoutLeftDrawerBordered',
       'layoutRightDrawer',
       'layoutRightDrawerVisible',
       'layoutRightDrawerBehavior',
+
       'layoutRightDrawerOverlay',
       'layoutRightDrawerElevated',
       'layoutRightDrawerBordered',
       'layoutFooter',
       'layoutFooterVisible',
+
       'layoutFooterReveal',
       'layoutFooterElevated',
       'layoutFooterBordered'

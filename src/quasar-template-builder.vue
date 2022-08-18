@@ -5,7 +5,7 @@
       :reveal="layoutHeaderReveal"
       :elevated="layoutHeaderElevated"
       :bordered="layoutHeaderBordered"
-      :class="[layoutHeaderCustomClass, headerVisibility ? 'hidden': '']"
+      :class="[layoutHeaderCustomClass, !layoutHeaderVisible ? 'hidden': '']"
     >
       <slot name="header">
         <q-toolbar
@@ -13,13 +13,13 @@
           style="width: 100%; justify-content: space-between"
         >
           <q-btn
-            v-if="!layoutLeftDrawerVisible"
+            v-if="layoutLeftDrawer"
             icon="menu"
             side="left"
             @click="toggleLeftDrawer"
           />
           <q-btn
-            v-if="!layoutRightDrawerVisible "
+            v-if="layoutRightDrawer"
             icon="menu"
             side="right"
             @click="toggleRightDrawer"
@@ -29,7 +29,7 @@
     </q-header>
     <q-drawer
       v-if="layoutLeftDrawer"
-      v-model="defaultProperties.layoutLeftDrawerVisible"
+      v-model="layoutLeftDrawerVisible"
       show-if-above
       :overlay="layoutLeftDrawerOverlay"
       :elevated="layoutLeftDrawerElevated"
@@ -44,7 +44,7 @@
 
     <q-drawer
       v-if="layoutRightDrawer"
-      v-model="defaultProperties.layoutRightDrawerVisible"
+      v-model="layoutRightDrawerVisible"
       show-if-above
       :overlay="layoutRightDrawerOverlay"
       :elevated="layoutRightDrawerElevated"
@@ -66,7 +66,7 @@
       :reveal="layoutFooterReveal"
       :elevated="layoutFooterElevated"
       :bordered="layoutFooterBordered"
-      :class="[layoutFooterCustomClass, footerVisibility ? 'hidden': '']"
+      :class="[layoutFooterCustomClass, !layoutFooterVisible ? 'hidden': '']"
     >
       <slot name="footer">
         <q-toolbar />
@@ -77,7 +77,28 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations, mapActions} from 'vuex'
+import { mapMutations } from 'vuex'
+
+function getComputed (state) {
+  let mutation = 'update' + state.substring(0, 1).toUpperCase() + state.substring(1)
+  return {
+    set (newValue) {
+      this[mutation](newValue)
+    },
+    get () {
+      return this.$store.getters['AppLayout/' + state]
+    }
+  }
+}
+
+function getComputeds (keys) {
+  const computeds = {}
+  keys.forEach(key => {
+    computeds[key] = getComputed(key)
+  })
+
+  return computeds
+}
 
 export default {
   name: 'QuasarTemplateBuilder',
@@ -88,15 +109,7 @@ export default {
       type: Object
     }
   },
-  created() {
-    this.defaultProperties = Object.assign(this.defaultProperties, this.value)
-    this.updateStore(this.defaultProperties)
-  },
-  mounted() {
-    this.defaultProperties = Object.assign(this.defaultProperties, this.value)
-    this.updateStore(this.defaultProperties)
-  },
-  data() {
+  data () {
     return {
       defaultProperties: {
         layoutView: 'lHh Lpr lFf',
@@ -135,80 +148,54 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters('AppLayout', [
-      'layoutView',
-      'layoutHeader',
-      'layoutHeaderVisible',
-      'layoutHeaderReveal',
-      'layoutHeaderElevated',
-      'layoutHeaderBordered',
-      'layoutLeftDrawer',
-      'layoutLeftDrawerVisible',
-      'layoutLeftDrawerBehavior',
-      'layoutLeftDrawerOverlay',
-      'layoutLeftDrawerElevated',
-      'layoutLeftDrawerBordered',
-      'layoutRightDrawer',
-      'layoutRightDrawerVisible',
-      'layoutRightDrawerBehavior',
-      'layoutRightDrawerOverlay',
-      'layoutRightDrawerElevated',
-      'layoutRightDrawerBordered',
-      'layoutFooter',
-      'layoutFooterVisible',
-      'layoutFooterReveal',
-      'layoutFooterElevated',
-      'layoutFooterBordered',
-      'layoutFooterCustomClass',
-      'layoutHeaderCustomClass',
-      'layoutFooterBordered',
-      'layoutLeftDrawerCustomClass',
-      'layoutRightDrawerCustomClass',
-      'layoutPageContainerCustomClass',
-      'layoutLeftDrawerWidth',
-      'layoutRightDrawerWidth'
-    ]),
-    headerVisibility() {
-      return !this.layoutHeaderVisible
-    },
-    footerVisibility() {
-      return !this.layoutFooterVisible
-    }
-  },
-  watch: {
-    'defaultProperties.layoutLeftDrawerVisible': function (newValue){
-      this.updateLayoutLeftDrawerVisible(newValue)
-    },
-    'defaultProperties.layoutRightDrawerVisible': function (newValue){
-      this.updateLayoutRightDrawerVisible(newValue)
-    },
-    layoutLeftDrawerVisible (newValue) {
-      this.defaultProperties.layoutLeftDrawerVisible = newValue
-    },
-    layoutRightDrawerVisible (newValue) {
-      this.defaultProperties.layoutRightDrawerVisible = newValue
-    },
-  },
+  computed: getComputeds([
+    'layoutView',
+    'layoutHeader',
+    'layoutHeaderVisible',
+    'layoutHeaderReveal',
+    'layoutHeaderElevated',
+    'layoutHeaderBordered',
+    'layoutLeftDrawer',
+    'layoutLeftDrawerVisible',
+    'layoutLeftDrawerBehavior',
+    'layoutLeftDrawerOverlay',
+    'layoutLeftDrawerElevated',
+    'layoutLeftDrawerBordered',
+    'layoutRightDrawer',
+    'layoutRightDrawerVisible',
+    'layoutRightDrawerBehavior',
+    'layoutRightDrawerOverlay',
+    'layoutRightDrawerElevated',
+    'layoutRightDrawerBordered',
+    'layoutFooter',
+    'layoutFooterVisible',
+    'layoutFooterReveal',
+    'layoutFooterElevated',
+    'layoutFooterBordered',
+    'layoutFooterCustomClass',
+    'layoutHeaderCustomClass',
+    'layoutFooterBordered',
+    'layoutLeftDrawerCustomClass',
+    'layoutRightDrawerCustomClass',
+    'layoutPageContainerCustomClass',
+    'layoutLeftDrawerWidth',
+    'layoutRightDrawerWidth'
+  ]),
   methods: {
     ...mapMutations('AppLayout', [
       'updateLayoutLeftDrawerVisible',
       'updateLayoutRightDrawerVisible',
       'updateLayoutLeftDrawerBehavior',
       'updateLayoutRightDrawerBehavior'
-
     ]),
-    ...mapActions('AppLayout',[
-      'updateStore'
-    ]),
-    toggleLeftDrawer() {
-      this.updateLayoutLeftDrawerVisible(!this.layoutLeftDrawerVisible)
+    toggleLeftDrawer () {
+      this.layoutLeftDrawerVisible = !this.layoutLeftDrawerVisible
     },
-    toggleRightDrawer() {
-      this.updateLayoutRightDrawerVisible(!this.layoutRightDrawerVisible)
+    toggleRightDrawer () {
+      this.layoutRightDrawerVisible = !this.layoutRightDrawerVisible
     },
-    onResize (size){
-      this.$emit('onResize',size)
+    onResize (size) {
+      this.$emit('onResize', size)
     }
   }
 }

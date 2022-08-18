@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
-import App from './test/App.vue'
 import { Quasar } from 'quasar'
-import quasarUserOptions from './quasar-user-options'
+import App from './test/App.vue'
 import store from './store/index'
+import quasarUserOptions from './quasar-user-options'
 
 createApp(App)
     .use(store)
