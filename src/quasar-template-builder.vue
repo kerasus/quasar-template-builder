@@ -30,7 +30,6 @@
     <q-drawer
       v-if="layoutLeftDrawer"
       v-model="layoutLeftDrawerVisible"
-      show-if-above
       :overlay="layoutLeftDrawerOverlay"
       :elevated="layoutLeftDrawerElevated"
       :bordered="layoutLeftDrawerBordered"
@@ -45,7 +44,6 @@
     <q-drawer
       v-if="layoutRightDrawer"
       v-model="layoutRightDrawerVisible"
-      show-if-above
       :overlay="layoutRightDrawerOverlay"
       :elevated="layoutRightDrawerElevated"
       :bordered="layoutRightDrawerBordered"
