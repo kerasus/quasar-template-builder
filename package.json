@@ -1,6 +1,6 @@
 {
   "name": "quasar-template-builder",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "template builder for quasar",
   "scripts": {
     "serve": "vue-cli-service serve",
