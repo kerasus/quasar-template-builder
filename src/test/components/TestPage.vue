@@ -49,6 +49,8 @@
           >
             <div class="q-mb-md text-grey-8">
               Layout "View"
+              <br>
+              {{ layoutView }}
             </div>
 
             <div class="q-mb-lg rounded-borders overflow-hidden shadow-2">
@@ -373,19 +375,6 @@ import { mapGetters, mapMutations } from 'vuex'
 import {
   mdiMenu, mdiViewDashboard, mdiCog, mdiPlayCircleOutline
 } from '@quasar/extras/mdi-v5'
-// function getComputed (state) {
-//   let mutation = 'update' + state.substring(0, 1).toUpperCase() + state.substring(1);
-//   return {
-//     set (newValue) {
-//       console.log('newValue', newValue)
-//       console.log('mutation', mutation)
-//       this[mutation](newValue)
-//     },
-//     get () {
-//       return this.$store.getters['AppLayout/'+state]
-//     }
-//   }
-// }
 
 export default {
   name: 'Settings',
@@ -702,33 +691,6 @@ export default {
     }
   },
   computed: {
-    // 'layoutView': getComputed('layoutView'),
-    // 'layoutHeader': getComputed('layoutHeader'),
-    // 'layoutHeaderVisible': getComputed('layoutHeaderVisible'),
-    // 'layoutHeaderReveal': getComputed('layoutHeaderReveal'),
-    // 'layoutHeaderElevated': getComputed('layoutHeaderElevated'),
-    // 'layoutHeaderBordered': getComputed('layoutHeaderBordered'),
-    // 'layoutLeftDrawer': getComputed('layoutLeftDrawer'),
-    // 'layoutLeftDrawerVisible': getComputed('layoutLeftDrawerVisible'),
-    // 'layoutLeftDrawerBehavior': getComputed('layoutLeftDrawerBehavior'),
-    // 'layoutLeftDrawerOverlay': getComputed('layoutLeftDrawerOverlay'),
-    //
-    // 'layoutLeftDrawerElevated': getComputed('layoutLeftDrawerElevated'),
-    // 'layoutLeftDrawerBordered': getComputed('layoutLeftDrawerBordered'),
-    // 'layoutRightDrawer': getComputed('layoutRightDrawer'),
-    // 'layoutView': getComputed('layoutView'),
-    // 'layoutView': getComputed('layoutView'),
-    //
-    // 'layoutView': getComputed('layoutView'),
-    // 'layoutView': getComputed('layoutView'),
-    // 'layoutView': getComputed('layoutView'),
-    // 'layoutView': getComputed('layoutView'),
-    // 'layoutView': getComputed('layoutView'),
-    //
-    // 'layoutView': getComputed('layoutView'),
-    // 'layoutView': getComputed('layoutView'),
-    // 'layoutView': getComputed('layoutView'),
-
     ...mapGetters('AppLayout', [
       'layoutView',
       'layoutHeader',

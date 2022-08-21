@@ -76,133 +76,71 @@
   </q-layout>
 </template>
 
-<script>
-import { mapMutations } from 'vuex'
+<script setup>
+import { defineEmits, computed } from 'vue'
+import { useStore } from 'vuex'
+const emit = defineEmits(['onResize'])
+// export const name = 'QuasarTemplateBuilder'
 
-function getComputed (state) {
+const store = useStore()
+function getWritableComputed (state) {
   let mutation = 'update' + state.substring(0, 1).toUpperCase() + state.substring(1)
   return {
     set (newValue) {
-      this[mutation](newValue)
+      console.log('set', newValue)
+      store.commit('AppLayout/' + mutation, newValue)
     },
     get () {
-      return this.$store.getters['AppLayout/' + state]
+      const dd = store.getters['AppLayout/' + state]
+      console.log('state: ', state, dd)
+      return dd
     }
   }
 }
 
-function getComputeds (keys) {
-  const computeds = {}
-  keys.forEach(key => {
-    computeds[key] = getComputed(key)
-  })
+let layoutView = computed(getWritableComputed('layoutView'))
+let layoutHeader = computed(getWritableComputed('layoutHeader'))
+let layoutHeaderVisible = computed(getWritableComputed('layoutHeaderVisible'))
+let layoutHeaderReveal = computed(getWritableComputed('layoutHeaderReveal'))
+let layoutHeaderElevated = computed(getWritableComputed('layoutHeaderElevated'))
 
-  return computeds
+let layoutHeaderBordered = computed(getWritableComputed('layoutHeaderBordered'))
+let layoutLeftDrawer = computed(getWritableComputed('layoutLeftDrawer'))
+let layoutLeftDrawerVisible = computed(getWritableComputed('layoutLeftDrawerVisible'))
+let layoutLeftDrawerBehavior = computed(getWritableComputed('layoutLeftDrawerBehavior'))
+let layoutLeftDrawerOverlay = computed(getWritableComputed('layoutLeftDrawerOverlay'))
+
+let layoutLeftDrawerElevated = computed(getWritableComputed('layoutLeftDrawerElevated'))
+let layoutLeftDrawerBordered = computed(getWritableComputed('layoutLeftDrawerBordered'))
+let layoutRightDrawer = computed(getWritableComputed('layoutRightDrawer'))
+let layoutRightDrawerVisible = computed(getWritableComputed('layoutRightDrawerVisible'))
+let layoutRightDrawerBehavior = computed(getWritableComputed('layoutRightDrawerBehavior'))
+
+let layoutRightDrawerOverlay = computed(getWritableComputed('layoutRightDrawerOverlay'))
+let layoutRightDrawerElevated = computed(getWritableComputed('layoutRightDrawerElevated'))
+let layoutRightDrawerBordered = computed(getWritableComputed('layoutRightDrawerBordered'))
+let layoutFooter = computed(getWritableComputed('layoutFooter'))
+let layoutFooterVisible = computed(getWritableComputed('layoutFooterVisible'))
+
+let layoutFooterReveal = computed(getWritableComputed('layoutFooterReveal'))
+let layoutFooterElevated = computed(getWritableComputed('layoutFooterElevated'))
+let layoutFooterBordered = computed(getWritableComputed('layoutFooterBordered'))
+let layoutFooterCustomClass = computed(getWritableComputed('layoutFooterCustomClass'))
+let layoutHeaderCustomClass = computed(getWritableComputed('layoutHeaderCustomClass'))
+
+let layoutLeftDrawerCustomClass = computed(getWritableComputed('layoutLeftDrawerCustomClass'))
+let layoutRightDrawerCustomClass = computed(getWritableComputed('layoutRightDrawerCustomClass'))
+// let layoutPageContainerCustomClass = computed(getWritableComputed('layoutPageContainerCustomClass'))
+let layoutLeftDrawerWidth = computed(getWritableComputed('layoutLeftDrawerWidth'))
+let layoutRightDrawerWidth = computed(getWritableComputed('layoutRightDrawerWidth'))
+
+function toggleLeftDrawer () {
+  store.commit('AppLayout/updateLayoutLeftDrawerVisible', !layoutLeftDrawerVisible.value)
 }
-
-export default {
-  name: 'QuasarTemplateBuilder',
-  props: {
-    value: {
-      default: () => {
-      },
-      type: Object
-    }
-  },
-  data () {
-    return {
-      defaultProperties: {
-        layoutView: 'lHh Lpr lFf',
-        layoutHeader: true,
-        layoutHeaderVisible: true,
-        layoutHeaderReveal: false,
-        layoutHeaderElevated: false,
-        layoutHeaderBordered: false,
-        layoutLeftDrawer: false,
-        layoutLeftDrawerVisible: false,
-        layoutLeftDrawerBehavior: 'desktop',
-        layoutLeftDrawerBtn: false,
-        layoutLeftDrawerOverlay: false,
-        layoutLeftDrawerElevated: false,
-        layoutLeftDrawerBordered: false,
-        layoutRightDrawer: false,
-        layoutRightDrawerVisible: false,
-        layoutRightDrawerBtn: false,
-        layoutRightDrawerOverlay: false,
-        layoutRightDrawerBehavior: 'desktop',
-        layoutRightDrawerElevated: false,
-        layoutRightDrawerBordered: false,
-        layoutPageContainer: true,
-        layoutFooter: false,
-        layoutFooterVisible: true,
-        layoutFooterReveal: false,
-        layoutFooterElevated: false,
-        layoutFooterBordered: false,
-        layoutHeaderCustomClass: '',
-        layoutLeftDrawerCustomClass: '',
-        layoutRightDrawerCustomClass: '',
-        layoutPageContainerCustomClass: '',
-        layoutFooterCustomClass: '',
-        layoutLeftDrawerWidth: 300,
-        layoutRightDrawerWidth: 300,
-      }
-    }
-  },
-  computed: getComputeds([
-    'layoutView',
-    'layoutHeader',
-    'layoutHeaderVisible',
-    'layoutHeaderReveal',
-    'layoutHeaderElevated',
-    'layoutHeaderBordered',
-    'layoutLeftDrawer',
-    'layoutLeftDrawerVisible',
-    'layoutLeftDrawerBehavior',
-    'layoutLeftDrawerOverlay',
-    'layoutLeftDrawerElevated',
-    'layoutLeftDrawerBordered',
-    'layoutRightDrawer',
-    'layoutRightDrawerVisible',
-    'layoutRightDrawerBehavior',
-    'layoutRightDrawerOverlay',
-    'layoutRightDrawerElevated',
-    'layoutRightDrawerBordered',
-    'layoutFooter',
-    'layoutFooterVisible',
-    'layoutFooterReveal',
-    'layoutFooterElevated',
-    'layoutFooterBordered',
-    'layoutFooterCustomClass',
-    'layoutHeaderCustomClass',
-    'layoutFooterBordered',
-    'layoutLeftDrawerCustomClass',
-    'layoutRightDrawerCustomClass',
-    'layoutPageContainerCustomClass',
-    'layoutLeftDrawerWidth',
-    'layoutRightDrawerWidth'
-  ]),
-  methods: {
-    ...mapMutations('AppLayout', [
-      'updateLayoutLeftDrawerVisible',
-      'updateLayoutRightDrawerVisible',
-      'updateLayoutLeftDrawerBehavior',
-      'updateLayoutRightDrawerBehavior'
-    ]),
-    toggleLeftDrawer () {
-      this.layoutLeftDrawerVisible = !this.layoutLeftDrawerVisible
-    },
-    toggleRightDrawer () {
-      this.layoutRightDrawerVisible = !this.layoutRightDrawerVisible
-    },
-    onResize (size) {
-      this.$emit('onResize', size)
-    }
-  }
+function toggleRightDrawer () {
+  store.commit('AppLayout/updateLayoutRightDrawerVisible', !layoutRightDrawerVisible.value)
+}
+function onResize (size) {
+  emit('onResize',size);
 }
 </script>
-
-<style scoped>
-.hidden {
-  display: none;
-}
-</style>
