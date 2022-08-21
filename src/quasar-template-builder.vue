@@ -87,13 +87,10 @@ function getWritableComputed (state) {
   let mutation = 'update' + state.substring(0, 1).toUpperCase() + state.substring(1)
   return {
     set (newValue) {
-      console.log('set', newValue)
       store.commit('AppLayout/' + mutation, newValue)
     },
     get () {
-      const dd = store.getters['AppLayout/' + state]
-      console.log('state: ', state, dd)
-      return dd
+      return store.getters['AppLayout/' + state]
     }
   }
 }
