@@ -2,7 +2,6 @@
   <q-breadcrumbs
     :active-color="breadcrumbs.activeColor"
     :gutter="breadcrumbs.gutter ? breadcrumbs.gutter : 'sm'"
-    class="breadcrumbs-container"
     :class="breadcrumbs.customClass"
   >
     <template
@@ -63,13 +62,3 @@ export default {
   },
 }
 </script>
-
-<style scoped lang="scss">
-.breadcrumbs-container{
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  padding: inherit;
-  margin: inherit;
-}
-</style>
