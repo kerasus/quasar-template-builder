@@ -1,43 +1,47 @@
 <template>
-  <div>
-    <q-breadcrumbs
-      :active-color="config.activeColor"
-      :gutter="config.gutter ? config.gutter : 'sm'"
-      class="breadcrumbs-container"
-      :class="config.customClass"
+  <q-breadcrumbs
+    :active-color="breadcrumbs.activeColor"
+    :gutter="breadcrumbs.gutter ? breadcrumbs.gutter : 'sm'"
+    class="breadcrumbs-container"
+    :class="breadcrumbs.customClass"
+  >
+    <template
+      v-if="breadcrumbs.separator"
+      #separator
     >
-      <template
-        v-if="config.separator"
-        #separator
-      >
-        <q-icon
-          :name="config.separator"
-          :color="config.separatorColor"
-        />
-      </template>
+      <q-icon
+        :name="breadcrumbs.separator"
+        :color="breadcrumbs.separatorColor"
+      />
+    </template>
 
-      <q-breadcrumbs-el
-        v-for="(breadcrumbItem, index) in breadcrumbs"
-        :key="index"
-        :exact="breadcrumbItem.exact"
-        :href="breadcrumbItem.href?.url"
-        :to="{name: breadcrumbItem.route?.name}"
-        :target="breadcrumbItem.href?.target"
-        :disable="breadcrumbItem.disable"
-        :exact-active-class="breadcrumbItem.exactActiveClass"
-        :active-class="breadcrumbItem.activeClass"
-      >
-        <template #default>
+    <q-breadcrumbs-el
+      v-for="(breadcrumbItem, index) in config"
+      :key="index"
+      :exact="breadcrumbItem.exact"
+      :href="breadcrumbItem.href?.url"
+      :to="{name: breadcrumbItem.route?.name}"
+      :target="breadcrumbItem.href?.target"
+      :disable="breadcrumbItem.disable"
+      :exact-active-class="breadcrumbItem.exactActiveClass"
+      :active-class="breadcrumbItem.activeClass"
+    >
+      <template #default>
+        <q-skeleton
+          v-if="breadcrumbItem.loading"
+          type="QBadge"
+        />
+        <div v-else>
           <q-icon
             v-if="breadcrumbItem.icon"
             class="q-mx-xs"
             :name="breadcrumbItem.icon"
           />
           <span>{{ breadcrumbItem.title }}</span>
-        </template>
-      </q-breadcrumbs-el>
-    </q-breadcrumbs>
-  </div>
+        </div>
+      </template>
+    </q-breadcrumbs-el>
+  </q-breadcrumbs>
 </template>
 
 <script>
@@ -48,29 +52,15 @@ export default {
   }),
   props:{
     breadcrumbs: {
+      type : Object,Boolean,
+      default :() => {}
+    },
+    config: {
       type : Array,
       default :() => []
     },
-    config: {
-      type : Object,
-      default :() => {}
-    },
 
   },
-  methods:{
-    validation(val){
-      console.log(val)
-    },
-    icon(icon, img){
-      if(icon){
-        return icon
-      }else if(img){
-        return 'img:' + img
-      }
-      return false
-    }
-  }
-
 }
 </script>
 
