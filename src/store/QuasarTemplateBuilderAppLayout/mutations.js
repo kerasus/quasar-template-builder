@@ -119,3 +119,11 @@ export function updateLayoutInjectDrawerOnScrolling (state, data) {
   return state.leftDrawerWidth = data
 }
 
+export function updateLayoutBreadcrumb (state, data) {
+  return state.layoutBreadcrumb = data
+}
+
+export function updateLayoutBreadcrumbs (state, data) {
+  return state.layoutBreadcrumbs = data
+}
+

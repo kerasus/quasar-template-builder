@@ -29,5 +29,7 @@ export default {
   layoutFooterElevated: false,
   layoutFooterBordered: false,
   footerCustomClass: '',
-  injectDrawerOnScrolling: true
+  injectDrawerOnScrolling: true,
+  layoutBreadcrumb: false,
+  layoutBreadcrumbs: [],
 }

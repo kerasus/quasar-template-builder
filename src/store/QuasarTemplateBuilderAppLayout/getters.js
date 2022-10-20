@@ -121,3 +121,11 @@ export function layoutPageContainerCustomClass (state) {
 export function layoutInjectDrawerOnScrolling (state) {
   return state.injectDrawerOnScrolling
 }
+
+export function layoutBreadcrumb (state) {
+  return state.layoutBreadcrumb
+}
+
+export function layoutBreadcrumbs (state) {
+  return state.layoutBreadcrumbs
+}
