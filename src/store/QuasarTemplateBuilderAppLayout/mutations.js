@@ -124,6 +124,8 @@ export function updateLayoutBreadcrumbs (state, data) {
 }
 
 export function updateLayoutBreadcrumbsElements (state, data) {
-  return state.layoutBreadcrumbsElements = data
+  if(data.length > 0){
+    return state.layoutBreadcrumbsElements = data
+  }
 }
 

@@ -56,11 +56,6 @@
     </q-drawer>
 
     <q-page-container>
-      <breadcrumbs
-        v-if="layoutBreadcrumbs"
-        :breadcrumbs="layoutBreadcrumbs"
-        :config="layoutBreadcrumbsElements"
-      />
       <slot name="content" />
     </q-page-container>
 
@@ -83,7 +78,6 @@
 import { defineEmits, computed } from 'vue'
 
 import { useStore } from 'vuex'
-import Breadcrumbs from './components/breadcrumbs';
 const emit = defineEmits(['onResize'])
 // export const name = 'QuasarTemplateBuilder'
 const store = useStore()
@@ -134,9 +128,6 @@ let layoutRightDrawerCustomClass = computed(getWritableComputed('layoutRightDraw
 // let layoutPageContainerCustomClass = computed(getWritableComputed('layoutPageContainerCustomClass'))
 let layoutLeftDrawerWidth = computed(getWritableComputed('layoutLeftDrawerWidth'))
 let layoutRightDrawerWidth = computed(getWritableComputed('layoutRightDrawerWidth'))
-
-let layoutBreadcrumbs = computed(getWritableComputed('layoutBreadcrumbs'))
-let layoutBreadcrumbsElements = computed(getWritableComputed('layoutBreadcrumbsElements'))
 
 function toggleLeftDrawer () {
   store.commit('AppLayout/updateLayoutLeftDrawerVisible', !layoutLeftDrawerVisible.value)

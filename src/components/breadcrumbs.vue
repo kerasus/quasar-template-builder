@@ -1,21 +1,22 @@
 <template>
   <q-breadcrumbs
-    :active-color="breadcrumbs.activeColor"
-    :gutter="breadcrumbs.gutter ? breadcrumbs.gutter : 'sm'"
-    :class="breadcrumbs.customClass"
+    v-if="layoutBreadcrumbs"
+    :active-color="layoutBreadcrumbs.activeColor"
+    :gutter="layoutBreadcrumbs.gutter ? breadcrumbs.gutter : 'sm'"
+    :class="layoutBreadcrumbs.customClass"
   >
     <template
-      v-if="breadcrumbs.separator"
+      v-if="layoutBreadcrumbs.separator"
       #separator
     >
       <q-icon
-        :name="breadcrumbs.separator"
-        :color="breadcrumbs.separatorColor"
+        :name="layoutBreadcrumbs.separator"
+        :color="layoutBreadcrumbs.separatorColor"
       />
     </template>
 
     <q-breadcrumbs-el
-      v-for="(breadcrumbItem, index) in config"
+      v-for="(breadcrumbItem, index) in layoutBreadcrumbsElements"
       :key="index"
       :exact="breadcrumbItem.exact"
       :href="breadcrumbItem.href?.url"
@@ -43,22 +44,24 @@
   </q-breadcrumbs>
 </template>
 
-<script>
-export default {
-  name: 'Breadcrumbs',
-  data:()=>({
-    model: ''
-  }),
-  props:{
-    breadcrumbs: {
-      type : Object,Boolean,
-      default :() => {}
-    },
-    config: {
-      type : Array,
-      default :() => []
-    },
+<script setup>
+import {useStore} from 'vuex';
+import { computed } from 'vue'
+const store = useStore()
 
-  },
+function getWritableComputed (state) {
+  let mutation = 'update' + state.substring(0, 1).toUpperCase() + state.substring(1)
+  return {
+    set (newValue) {
+      store.commit('AppLayout/' + mutation, newValue)
+    },
+    get () {
+      return store.getters['AppLayout/' + state]
+    }
+  }
 }
+
+let layoutBreadcrumbs = computed(getWritableComputed('layoutBreadcrumbs'))
+let layoutBreadcrumbsElements = computed(getWritableComputed('layoutBreadcrumbsElements'))
+
 </script>
