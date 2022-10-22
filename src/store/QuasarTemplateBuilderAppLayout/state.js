@@ -1,3 +1,4 @@
+
 export default {
   layoutView: 'lHh Lpr lFf',
   layoutHeader: false,
@@ -30,6 +31,6 @@ export default {
   layoutFooterBordered: false,
   footerCustomClass: '',
   injectDrawerOnScrolling: true,
-  layoutBreadcrumb: false,
-  layoutBreadcrumbs: [],
+  layoutBreadcrumbs: false,
+  layoutBreadcrumbsElements: []
 }
