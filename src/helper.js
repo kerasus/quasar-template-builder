@@ -1,54 +1,56 @@
-function getRouteWithParent (routeNode, toName) {
-  const routes = routeNode.children
+const getRouteWithParent = function (routeNode, toName) {
+  const routes = routeNode.children;
   for (const routeIndex in routes) {
-    const route = routes[routeIndex]
+    const route = routes[routeIndex];
     if (route.name === toName) {
       return {
         route,
         parent: routeNode
-      }
+      };
     } else {
       if (route.children && route.children.length > 0) {
-        const res = getRouteWithParent(route, toName)
+        const res = getRouteWithParent(route, toName);
         if (res) {
           return {
             route: res,
             parent: routeNode
-          }
+          };
         }
       }
     }
   }
 }
-function createBreadcrumbsFromRouteWithParent (routeWithParent) {
+
+const createBreadcrumbsFromRouteWithParent = function (routeWithParent) {
   if (routeWithParent.route) {
-    const array = createBreadcrumbsFromRouteWithParent(routeWithParent.route)
+    const array = createBreadcrumbsFromRouteWithParent(routeWithParent.route);
     if (routeWithParent.parent.breadcrumbs) {
-      array.unshift(routeWithParent.parent.breadcrumbs)
+      array.unshift(routeWithParent.parent.breadcrumbs);
     }
-    return array
+    return array;
   } else {
     if (routeWithParent.breadcrumbs) {
-      return [routeWithParent.breadcrumbs]
+      return [routeWithParent.breadcrumbs];
     } else {
-      return []
+      return [];
     }
   }
 }
-function createLayoutConfigArray (routeWithParent) {
+
+const createLayoutConfigArray = function (routeWithParent) {
   if (routeWithParent.route) {
-    const array = createLayoutConfigArray(routeWithParent.route)
+    const array = createLayoutConfigArray(routeWithParent.route);
     if (routeWithParent.parent.layoutConfig) {
-      array.unshift(routeWithParent.parent.layoutConfig)
+      array.unshift(routeWithParent.parent.layoutConfig);
     }
-    return array
+    return array;
   } else {
     if (routeWithParent.layoutConfig) {
-      return [routeWithParent.layoutConfig]
+      return [routeWithParent.layoutConfig];
     } else {
-      return []
+      return [];
     }
   }
 }
-export {getRouteWithParent, createBreadcrumbsFromRouteWithParent, createLayoutConfigArray}
 
+module.exports = {getRouteWithParent, createBreadcrumbsFromRouteWithParent, createLayoutConfigArray}

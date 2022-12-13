@@ -1,131 +1,137 @@
-export function layoutView (state) {
-  return state.layoutView
-}
+module.exports = {
+  layoutView: (state) => {
+    return state.layoutView;
+  },
 
-export function layoutHeader (state) {
-  return state.layoutHeader
-}
+  layoutView: (state) => {
+    return state.layoutView;
+  },
 
-export function layoutHeaderVisible (state) {
-  return state.layoutHeaderVisible
-}
+  layoutHeader: (state) => {
+    return state.layoutHeader;
+  },
 
-export function layoutHeaderReveal (state) {
-  return state.layoutHeaderReveal
-}
+  layoutHeaderVisible: (state) => {
+    return state.layoutHeaderVisible;
+  },
 
-export function layoutHeaderElevated (state) {
-  return state.layoutHeaderElevated
-}
+  layoutHeaderReveal: (state) => {
+    return state.layoutHeaderReveal;
+  },
 
-export function layoutHeaderBordered (state) {
-  return state.layoutHeaderBordered
-}
+  layoutHeaderElevated: (state) => {
+    return state.layoutHeaderElevated;
+  },
 
-export function layoutHeaderCustomClass (state) {
-  return state.headerCustomClass
-}
+  layoutHeaderBordered: (state) => {
+    return state.layoutHeaderBordered;
+  },
 
-export function layoutLeftDrawer (state) {
-  return state.layoutLeftDrawer
-}
+  layoutHeaderCustomClass: (state) => {
+    return state.headerCustomClass;
+  },
 
-export function layoutLeftDrawerVisible (state) {
-  return state.layoutLeftDrawerVisible
-}
+  layoutLeftDrawer: (state) => {
+    return state.layoutLeftDrawer;
+  },
 
-export function layoutLeftDrawerBehavior (state) {
-  return state.layoutLeftDrawerBehavior
-}
+  layoutLeftDrawerVisible: (state) => {
+    return state.layoutLeftDrawerVisible;
+  },
 
-export function layoutLeftDrawerOverlay (state) {
-  return state.layoutLeftDrawerOverlay
-}
+  layoutLeftDrawerBehavior: (state) => {
+    return state.layoutLeftDrawerBehavior;
+  },
 
-export function layoutLeftDrawerElevated (state) {
-  return state.layoutLeftDrawerElevated
-}
+  layoutLeftDrawerOverlay: (state) => {
+    return state.layoutLeftDrawerOverlay;
+  },
 
-export function layoutLeftDrawerBordered (state) {
-  return state.layoutLeftDrawerBordered
-}
+  layoutLeftDrawerElevated: (state) => {
+    return state.layoutLeftDrawerElevated;
+  },
 
-export function layoutLeftDrawerCustomClass (state) {
-  return state.leftDrawerCustomClass
-}
+  layoutLeftDrawerBordered: (state) => {
+    return state.layoutLeftDrawerBordered;
+  },
 
-export function layoutLeftDrawerWidth (state) {
-  return state.leftDrawerWidth
-}
+  layoutLeftDrawerCustomClass: (state) => {
+    return state.leftDrawerCustomClass;
+  },
 
-export function layoutRightDrawer (state) {
-  return state.layoutRightDrawer
-}
+  layoutLeftDrawerWidth: (state) => {
+    return state.leftDrawerWidth;
+  },
 
-export function layoutRightDrawerVisible (state) {
-  return state.layoutRightDrawerVisible
-}
+  layoutRightDrawer: (state) => {
+    return state.layoutRightDrawer;
+  },
 
-export function layoutRightDrawerBehavior (state) {
-  return state.layoutRightDrawerBehavior
-}
+  layoutRightDrawerVisible: (state) => {
+    return state.layoutRightDrawerVisible;
+  },
 
-export function layoutRightDrawerOverlay (state) {
-  return state.layoutRightDrawerOverlay
-}
+  layoutRightDrawerBehavior: (state) => {
+    return state.layoutRightDrawerBehavior;
+  },
 
-export function layoutRightDrawerElevated (state) {
-  return state.layoutRightDrawerElevated
-}
+  layoutRightDrawerOverlay: (state) => {
+    return state.layoutRightDrawerOverlay;
+  },
 
-export function layoutRightDrawerBordered (state) {
-  return state.layoutRightDrawerBordered
-}
+  layoutRightDrawerElevated: (state) => {
+    return state.layoutRightDrawerElevated;
+  },
 
-export function layoutRightDrawerCustomClass (state) {
-  return state.rightDrawerCustomClass
-}
+  layoutRightDrawerBordered: (state) => {
+    return state.layoutRightDrawerBordered;
+  },
 
-export function layoutRightDrawerWidth (state) {
-  return state.rightDrawerWidth
-}
+  layoutRightDrawerCustomClass: (state) => {
+    return state.rightDrawerCustomClass;
+  },
 
-export function layoutFooter (state) {
-  return state.layoutFooter
-}
+  layoutRightDrawerWidth: (state) => {
+    return state.rightDrawerWidth;
+  },
 
-export function layoutFooterVisible (state) {
-  return state.layoutFooterVisible
-}
+  layoutFooter: (state) => {
+    return state.layoutFooter;
+  },
 
-export function layoutFooterReveal (state) {
-  return state.layoutFooterReveal
-}
+  layoutFooterVisible: (state) => {
+    return state.layoutFooterVisible;
+  },
 
-export function layoutFooterElevated (state) {
-  return state.layoutFooterElevated
-}
+  layoutFooterReveal: (state) => {
+    return state.layoutFooterReveal;
+  },
 
-export function layoutFooterBordered (state) {
-  return state.layoutFooterBordered
-}
+  layoutFooterElevated: (state) => {
+    return state.layoutFooterElevated;
+  },
 
-export function layoutFooterCustomClass (state) {
-  return state.footerCustomClass
-}
+  layoutFooterBordered: (state) => {
+    return state.layoutFooterBordered;
+  },
 
-export function layoutPageContainerCustomClass (state) {
-  return state.pageContainerCustomClass
-}
+  layoutFooterCustomClass: (state) => {
+    return state.footerCustomClass;
+  },
 
-export function layoutInjectDrawerOnScrolling (state) {
-  return state.injectDrawerOnScrolling
-}
+  layoutPageContainerCustomClass: (state) => {
+    return state.pageContainerCustomClass;
+  },
 
-export function layoutBreadcrumbs (state) {
-  return state.layoutBreadcrumbs
-}
+  layoutInjectDrawerOnScrolling: (state) => {
+    return state.injectDrawerOnScrolling;
+  },
 
-export function layoutBreadcrumbsElements (state) {
-  return state.layoutBreadcrumbsElements
-}
+  layoutBreadcrumbs: (state) => {
+    return state.layoutBreadcrumbs;
+  },
+
+  layoutBreadcrumbsElements: (state) => {
+    return state.layoutBreadcrumbsElements;
+  }
+};

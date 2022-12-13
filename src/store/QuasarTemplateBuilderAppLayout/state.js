@@ -1,5 +1,4 @@
-
-export default {
+module.exports = {
   layoutView: 'lHh Lpr lFf',
   layoutHeader: false,
   layoutHeaderVisible: false,
