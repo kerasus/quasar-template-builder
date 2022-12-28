@@ -10,7 +10,7 @@
   "main": "index.js",
   "dependencies": {
     "@quasar/extras": "^1.15.8",
-    "quasar": "^2.11.1",
+    "quasar": "^2.11.2",
     "vue": "^3.2.45",
     "vuex": "^4.1.0"
   },
