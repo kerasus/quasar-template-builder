@@ -9,9 +9,9 @@
   },
   "main": "index.js",
   "dependencies": {
-    "@quasar/extras": "^1.15.9",
-    "quasar": "^2.11.5",
-    "vue": "^3.2.45",
+    "@quasar/extras": "^1.15.11",
+    "quasar": "^2.11.7",
+    "vue": "^3.2.47",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
