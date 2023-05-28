@@ -75,7 +75,7 @@
 </template>
 
 <script setup>
-import { defineEmits, computed } from 'vue'
+import { computed } from 'vue'
 
 import { useStore } from 'vuex'
 const emit = defineEmits(['onResize'])
