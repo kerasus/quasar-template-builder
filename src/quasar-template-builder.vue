@@ -78,6 +78,7 @@
 import { computed } from 'vue'
 
 import { useStore } from 'vuex'
+// eslint-disable-next-line
 const emit = defineEmits(['onResize'])
 // export const name = 'QuasarTemplateBuilder'
 const store = useStore()

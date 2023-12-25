@@ -3,10 +3,6 @@ module.exports = {
     return state.layoutView;
   },
 
-  layoutView: (state) => {
-    return state.layoutView;
-  },
-
   layoutHeader: (state) => {
     return state.layoutHeader;
   },
