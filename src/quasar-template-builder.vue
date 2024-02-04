@@ -36,6 +36,7 @@
       :class=" layoutLeftDrawerCustomClass"
       :behavior="layoutLeftDrawerBehavior"
       :width="layoutLeftDrawerWidth"
+      :show-if-above="layoutLeftDrawerShowIfAbove"
       side="left"
     >
       <slot name="left-drawer" />
@@ -50,6 +51,7 @@
       :class="layoutRightDrawerCustomClass"
       :behavior="layoutRightDrawerBehavior"
       :width="layoutRightDrawerWidth"
+      :show-if-above="layoutRightDrawerShowIfAbove"
       side="right"
     >
       <slot name="right-drawer" />
@@ -129,6 +131,8 @@ let layoutRightDrawerCustomClass = computed(getWritableComputed('layoutRightDraw
 // let layoutPageContainerCustomClass = computed(getWritableComputed('layoutPageContainerCustomClass'))
 let layoutLeftDrawerWidth = computed(getWritableComputed('layoutLeftDrawerWidth'))
 let layoutRightDrawerWidth = computed(getWritableComputed('layoutRightDrawerWidth'))
+let layoutLeftDrawerShowIfAbove = computed(getWritableComputed('layoutLeftDrawerShowIfAbove'))
+let layoutRightDrawerShowIfAbove = computed(getWritableComputed('layoutRightDrawerShowIfAbove'))
 
 function toggleLeftDrawer () {
   store.commit('AppLayout/updateLayoutLeftDrawerVisible', !layoutLeftDrawerVisible.value)

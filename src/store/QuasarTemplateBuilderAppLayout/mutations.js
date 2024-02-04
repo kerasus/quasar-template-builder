@@ -46,6 +46,10 @@ module.exports = {
     state.layoutLeftDrawerBordered = data
   },
 
+  updateLayoutLeftDrawerShowIfAbove: (state, data) => {
+    state.layoutLeftDrawerShowIfAbove = data
+  },
+
   updateLayoutRightDrawer: (state, data) => {
     state.layoutRightDrawer = data
   },
@@ -68,6 +72,10 @@ module.exports = {
 
   updateLayoutRightDrawerBordered: (state, data) => {
     state.layoutRightDrawerBordered = data
+  },
+
+  updateLayoutRightDrawerShowIfAbove: (state, data) => {
+    state.layoutRightDrawerShowIfAbove = data
   },
 
   updateLayoutFooter: (state, data) => {

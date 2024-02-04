@@ -51,6 +51,10 @@ module.exports = {
     return state.layoutLeftDrawerBordered;
   },
 
+  layoutLeftDrawerShowIfAbove: (state) => {
+    return state.layoutLeftDrawerShowIfAbove;
+  },
+
   layoutLeftDrawerCustomClass: (state) => {
     return state.leftDrawerCustomClass;
   },
@@ -81,6 +85,10 @@ module.exports = {
 
   layoutRightDrawerBordered: (state) => {
     return state.layoutRightDrawerBordered;
+  },
+
+  layoutRightDrawerShowIfAbove: (state) => {
+    return state.layoutRightDrawerShowIfAbove;
   },
 
   layoutRightDrawerCustomClass: (state) => {
